@@ -36,4 +36,28 @@ function MonochromeChameleonTheme(_foreground, _background, _foregroundHighlight
 		draw_text(x+sprite_width/2, y+sprite_height/2, label);
 		gmcn_draw_reset();
 	}};
+	
+	static checkboxOnCreate = function(_id) { with (_id) {
+		textFont = other.getConfig("font", themeOverride);
+		textColour = other.getConfig("foreground", themeOverride);
+		boxColour = other.getConfig("background", themeOverride);
+		textColourHighlight = other.getConfig("foregroundHighlight", themeOverride);
+		boxColourHighlight = other.getConfig("backgroundHighlight", themeOverride);
+		textColourDisabled = other.getConfig("foregroundDisabled", themeOverride);
+		boxColourDisabled = other.getConfig("backgroundDisabled", themeOverride);
+	}};
+	
+	static checkboxOnDraw = function(_id) { with (_id) {
+		gmcn_draw_set_align(fa_left, fa_middle);
+		draw_set_colour(gmcn_choose_3state(hover, enabled, boxColourHighlight, boxColour, boxColourDisabled));
+		draw_rectangle(x, y, x+sprite_width, y+sprite_height, false);
+		draw_set_font(textFont);
+		draw_text(x+sprite_width, y+sprite_height/2, " " + label);
+		if (selected) {
+			draw_set_colour(gmcn_choose_3state(hover, enabled, textColourHighlight, textColour, textColourDisabled));
+			draw_line_width(x, y, x+sprite_width, y+sprite_height, sprite_width/16);
+			draw_line_width(x, y+sprite_height, x+sprite_width, y, sprite_width/16);
+		}
+		gmcn_draw_reset();
+	}};
 }

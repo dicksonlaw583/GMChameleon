@@ -12,7 +12,6 @@ if (enabled) {
 			theme.buttonOnUnhover(id);
 		}
 	}
-	theme.buttonOnStep(id);
 	wasHover = hover;
 
 	// Process selection
@@ -21,3 +20,6 @@ if (enabled) {
 		onClick();
 	}
 }
+
+// Run step hook
+theme.buttonOnStep(id);

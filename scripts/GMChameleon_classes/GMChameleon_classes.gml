@@ -26,4 +26,14 @@ function BaseChameleonTheme() constructor {
 	static buttonOnHover = __gmcn_noop__;
 	static buttonOnUnhover = __gmcn_noop__;
 	static buttonOnClick = __gmcn_noop__;
+	
+	/* Checkbox triggers */
+	static checkboxOnCreate = __gmcn_noop__;
+	static checkboxOnStep = __gmcn_noop__;
+	static checkboxOnDraw = __gmcn_noop__;
+	static checkboxOnDestroy = __gmcn_noop__;
+	static checkboxOnHover = __gmcn_noop__;
+	static checkboxOnUnhover = __gmcn_noop__;
+	static checkboxOnClick = __gmcn_noop__;
+	static checkboxOnChange = __gmcn_noop__;
 }
