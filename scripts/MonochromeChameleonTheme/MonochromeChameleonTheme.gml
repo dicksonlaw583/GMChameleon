@@ -60,4 +60,27 @@ function MonochromeChameleonTheme(_foreground, _background, _foregroundHighlight
 		}
 		gmcn_draw_reset();
 	}};
+	
+	static radioOnCreate = function(_id) { with (_id) {
+		textFont = other.getConfig("font", themeOverride);
+		textColour = other.getConfig("foreground", themeOverride);
+		boxColour = other.getConfig("background", themeOverride);
+		textColourHighlight = other.getConfig("foregroundHighlight", themeOverride);
+		boxColourHighlight = other.getConfig("backgroundHighlight", themeOverride);
+		textColourDisabled = other.getConfig("foregroundDisabled", themeOverride);
+		boxColourDisabled = other.getConfig("backgroundDisabled", themeOverride);
+	}};
+	
+	static radioOnDraw = function(_id) { with (_id) {
+		gmcn_draw_set_align(fa_left, fa_middle);
+		draw_set_colour(gmcn_choose_3state(hover, enabled, boxColourHighlight, boxColour, boxColourDisabled));
+		draw_ellipse(x, y, x+sprite_width, y+sprite_height, false);
+		draw_set_font(textFont);
+		draw_text(x+sprite_width, y+sprite_height/2, " " + label);
+		if (selected) {
+			draw_set_colour(gmcn_choose_3state(hover, enabled, textColourHighlight, textColour, textColourDisabled));
+			draw_ellipse(x+sprite_width*0.2, y+sprite_height*0.2, x+sprite_width*0.8, y+sprite_height*0.8, false);
+		}
+		gmcn_draw_reset();
+	}};
 }

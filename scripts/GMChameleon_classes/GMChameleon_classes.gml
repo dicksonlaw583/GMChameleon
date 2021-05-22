@@ -36,4 +36,14 @@ function BaseChameleonTheme() constructor {
 	static checkboxOnUnhover = __gmcn_noop__;
 	static checkboxOnClick = __gmcn_noop__;
 	static checkboxOnChange = __gmcn_noop__;
+	
+	/* Radio triggers */
+	static radioOnCreate = __gmcn_noop__;
+	static radioOnStep = __gmcn_noop__;
+	static radioOnDraw = __gmcn_noop__;
+	static radioOnDestroy = __gmcn_noop__;
+	static radioOnHover = __gmcn_noop__;
+	static radioOnUnhover = __gmcn_noop__;
+	static radioOnClick = __gmcn_noop__;
+	static radioOnChange = __gmcn_noop__;
 }
