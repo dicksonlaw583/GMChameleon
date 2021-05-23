@@ -46,4 +46,16 @@ function BaseChameleonTheme() constructor {
 	static radioOnUnhover = __gmcn_noop__;
 	static radioOnClick = __gmcn_noop__;
 	static radioOnChange = __gmcn_noop__;
+	
+	/* Text field triggers */
+	static textFieldOnCreate = __gmcn_noop__;
+	static textFieldOnStep = __gmcn_noop__;
+	static textFieldOnDraw = __gmcn_noop__;
+	static textFieldOnDestroy = __gmcn_noop__;
+	static textFieldOnHover = __gmcn_noop__;
+	static textFieldOnUnhover = __gmcn_noop__;
+	static textFieldOnFocus = __gmcn_noop__;
+	static textFieldOnUnfocus = __gmcn_noop__;
+	static textFieldOnClick = __gmcn_noop__;
+	static textFieldOnChange = __gmcn_noop__;
 }

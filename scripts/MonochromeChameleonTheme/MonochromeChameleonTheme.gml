@@ -83,4 +83,35 @@ function MonochromeChameleonTheme(_foreground, _background, _foregroundHighlight
 		}
 		gmcn_draw_reset();
 	}};
+
+	static textFieldOnCreate = function(_id) { with (_id) {
+		textFont = other.getConfig("font", themeOverride);
+		textColour = other.getConfig("foreground", themeOverride);
+		backColour = other.getConfig("background", themeOverride);
+		backColourHighlight = other.getConfig("backgroundHighlight", themeOverride);
+		textColourDisabled = other.getConfig("foregroundDisabled", themeOverride);
+		backColourDisabled = other.getConfig("backgroundDisabled", themeOverride);
+	}};
+	
+	static textFieldOnDraw = function(_id) { with (_id) {
+		draw_set_colour(gmcn_choose_3state(hover || focused, enabled, backColourHighlight, backColour, backColourDisabled));
+		draw_rectangle(x, y, x+sprite_width, y+sprite_height, false);
+		draw_set_colour(gmcn_choose_3state(hover || focused, enabled, textColour, textColour, textColourDisabled));
+		draw_set_font(textFont);
+		var stringWidth = string_width(value);
+		var caretWidth = string_width("|");
+		surface_set_target(textSurface);
+		draw_clear_alpha(c_black, 0);
+		if (stringWidth+caretWidth > sprite_width) {
+			gmcn_draw_set_align(fa_right, fa_middle);
+			draw_text(sprite_width, sprite_height/2, (focused && current_time mod 500 < 250) ? "|" : "");
+			draw_text(sprite_width-caretWidth, sprite_height/2, value);
+		} else {
+			gmcn_draw_set_align(fa_left, fa_middle);
+			draw_text(0, sprite_height/2, value + ((focused && current_time mod 500 < 250) ? "|" : ""));
+		}
+		surface_reset_target();
+		draw_surface(textSurface, x, y);
+		gmcn_draw_reset();
+	}};
 }
